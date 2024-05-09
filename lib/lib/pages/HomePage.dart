@@ -20,7 +20,6 @@ class _HomePageState extends State<HomePage> {
     'O que você gostaria de fazer hoje?',
     'Qual é o seu hobby favorito?',
     'O que você mais gosta de comer?',
-    // Adicione mais perguntas conforme necessário
   ];
   late List<String> _responses;
 
@@ -35,13 +34,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('NOME DA OSC'),
-        backgroundColor:
-            Colors.blue, // Define a cor de fundo do AppBar para azul
+        backgroundColor: Colors.blue,
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: CircleAvatar(
-              radius: 20, // Ajuste o tamanho conforme necessário
+              radius: 20,
               backgroundColor: Colors.grey[850], // Cor de fundo cinza escuro
               // backgroundImage: NetworkImage('URL_DA_IMAGEM')
             ),
@@ -59,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   const Text(
-                    'Nome do Usuário', // Substitua 'Nome do Usuário' pelo nome real do usuário
+                    'Nome do Usuário',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 24,
@@ -76,31 +74,22 @@ class _HomePageState extends State<HomePage> {
                       GestureDetector(
                         onTap: () {
                           setState(() {
-                            _isActive =
-                                !_isActive; // Alterna o estado de ativação
+                            _isActive = !_isActive;
                           });
                         },
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              _isActive
-                                  ? 'Status: Ativo '
-                                  : 'Status: Inativo ', // Mostra o status atual
+                              _isActive ? 'Status: Ativo ' : 'Status: Inativo ',
                               style: const TextStyle(
                                 color: Colors.white,
                               ),
                             ),
-                            const SizedBox(
-                                width:
-                                    5), // Espaçamento entre o texto e o ícone
+                            const SizedBox(width: 5),
                             Icon(
-                              _isActive
-                                  ? Icons.person
-                                  : Icons
-                                      .person_off, // Alterna o ícone de status
-                              size:
-                                  16, // Ícone de status, você pode escolher outro ícone conforme necessário
+                              _isActive ? Icons.person : Icons.person_off,
+                              size: 16,
                             ),
                           ],
                         ),
@@ -120,7 +109,6 @@ class _HomePageState extends State<HomePage> {
                 );
               },
             ),
-            // Dentro do Drawer na HomePage
             ListTile(
               leading: const Icon(Icons.chat),
               title: const Text('Mensagem'),
@@ -141,11 +129,8 @@ class _HomePageState extends State<HomePage> {
                 );
               },
             ),
-
-            // Espaço ocupado pelo Expanded para empurrar o ListTile de Sair para o final
             Expanded(
-              child:
-                  Container(), // Um Container vazio para ocupar o espaço necessário
+              child: Container(),
             ),
 
             // Adicionando o ListTile de Sair
@@ -179,9 +164,7 @@ class _HomePageState extends State<HomePage> {
                       },
                     ),
                     Container(
-                      // Adiciona um Container para controlar a largura
-                      width:
-                          double.infinity, // Preenche toda a largura disponível
+                      width: double.infinity,
                       child: TextField(
                         controller:
                             TextEditingController(text: _responses[index]),
@@ -194,8 +177,7 @@ class _HomePageState extends State<HomePage> {
                           labelText: 'Resposta',
                           hintText: 'Digite sua resposta aqui',
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(
-                                10), // Arredonda os cantos
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           filled: true,
                           fillColor: Colors.grey[200], // Cor de fundo do input
@@ -218,16 +200,14 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        // Lógica para enviar a resposta
                         print('Resposta enviada: ${_responses[index]}');
                       },
                       child: Text('Enviar'),
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                              10), // Arredonda os cantos do botão
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        backgroundColor: Colors.blue, // Cor de fundo do botão
+                        backgroundColor: Colors.blue,
                       ),
                     ),
                   ],
