@@ -19,4 +19,6 @@ dev_dependencies:
     flutter_lints: ^3.0.0
 
 flutter:
+    assets:
+        - lib/assets/app_logo.png
     uses-material-design: true

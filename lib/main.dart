@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cadastro_app/lib/pages/Login_Page.dart';
+import 'package:cadastro_app/pages/Login_Page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

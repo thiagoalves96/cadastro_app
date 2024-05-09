@@ -1,7 +1,7 @@
-import 'package:cadastro_app/lib/pages/Login_Page.dart';
-import 'package:cadastro_app/lib/pages/beneficio_page.dart';
-import 'package:cadastro_app/lib/pages/historico_page.dart';
-import 'package:cadastro_app/lib/pages/mensagem_page.dart';
+import 'package:cadastro_app/pages/Login_Page.dart';
+import 'package:cadastro_app/pages/beneficio_page.dart';
+import 'package:cadastro_app/pages/historico_page.dart';
+import 'package:cadastro_app/pages/mensagem_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -35,12 +35,13 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('NOME DA OSC'),
         backgroundColor: Colors.blue,
-        actions: <Widget>[
+        actions: const <Widget>[
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: CircleAvatar(
               radius: 20,
-              backgroundColor: Colors.grey[850], // Cor de fundo cinza escuro
+              backgroundColor: Color.fromARGB(
+                  255, 230, 227, 227), // Cor de fundo cinza escuro
               // backgroundImage: NetworkImage('URL_DA_IMAGEM')
             ),
           ),
