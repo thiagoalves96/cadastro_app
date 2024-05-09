@@ -1,0 +1,30 @@
+{
+    "project_info": {
+        "project_number": "38877650608",
+        "firebase_url": "https://govassist-ef17e-default-rtdb.firebaseio.com",
+        "project_id": "govassist-ef17e",
+        "storage_bucket": "govassist-ef17e.appspot.com"
+    },
+    "client": [
+        {
+            "client_info": {
+                "mobilesdk_app_id": "1:38877650608:android:f1490f79f8f3fd5af2a575",
+                "android_client_info": {
+                    "package_name": "com.example.cadastro_app"
+                }
+            },
+            "oauth_client": [],
+            "api_key": [
+                {
+                    "current_key": "AIzaSyDl3TPa4rbaL2yuZIvlYVu4NE5LWIQG_f4"
+                }
+            ],
+            "services": {
+                "appinvite_service": {
+                    "other_platform_oauth_client": []
+                }
+            }
+        }
+    ],
+    "configuration_version": "1"
+}

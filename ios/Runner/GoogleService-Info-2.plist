@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyBLo9-bub8ikKiWdpsYFNn8glQl7fDluxw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>38877650608</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.cadastroApp</string>
+	<key>PROJECT_ID</key>
+	<string>govassist-ef17e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>govassist-ef17e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:38877650608:ios:cd60661c1e66e2b2f2a575</string>
+	<key>DATABASE_URL</key>
+	<string>https://govassist-ef17e-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
