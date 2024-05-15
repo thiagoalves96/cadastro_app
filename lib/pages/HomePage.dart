@@ -2,6 +2,7 @@ import 'package:cadastro_app/pages/Login_Page.dart';
 import 'package:cadastro_app/pages/beneficio_page.dart';
 import 'package:cadastro_app/pages/historico_page.dart';
 import 'package:cadastro_app/pages/mensagem_page.dart';
+import 'package:cadastro_app/pages/questionario.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,20 +15,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   bool _isActive = false;
-  final List<String> _questions = [
-    'Qual é o seu nome?',
-    'Como você está se sentindo hoje?',
-    'O que você gostaria de fazer hoje?',
-    'Qual é o seu hobby favorito?',
-    'O que você mais gosta de comer?',
-  ];
-  late List<String> _responses;
-
-  @override
-  void initState() {
-    super.initState();
-    _responses = List.generate(_questions.length, (index) => '');
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +27,9 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.all(8.0),
             child: CircleAvatar(
               radius: 20,
-              backgroundColor: Color.fromARGB(
-                  255, 230, 227, 227), // Cor de fundo cinza escuro
-              // backgroundImage: NetworkImage('URL_DA_IMAGEM')
+              backgroundColor: Color.fromARGB(255, 230, 227, 227),
+              backgroundImage: NetworkImage(
+                  'https://i.pinimg.com/564x/65/59/05/65590513a81918f9142d3c69b6deeabf.jpg'),
             ),
           ),
         ],
@@ -147,77 +134,62 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: Column(
-        children: [
-          // Aqui começa a lista de questionários
-          Expanded(
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: _questions.length,
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    ListTile(
-                      title: Text(_questions[index]),
-                      onTap: () {
-                        // Lógica para lidar com o toque na pergunta
-                        print('Pergunta tocada: ${_questions[index]}');
-                      },
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints viewportConstraints) {
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  width: viewportConstraints.maxWidth *
+                      0.5, // Metade da largura da tela
+                  height: 100, // Altura fixa
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Lógica quando o primeiro botão for pressionado
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => QuestionarioPage()),
+                      );
+                    },
+                    child: Text('Questionário do OSC'),
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.blue, // Cor do texto
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(10)), // Bordas arredondadas
                     ),
-                    Container(
-                      width: double.infinity,
-                      child: TextField(
-                        controller:
-                            TextEditingController(text: _responses[index]),
-                        onChanged: (value) {
-                          setState(() {
-                            _responses[index] = value;
-                          });
-                        },
-                        decoration: InputDecoration(
-                          labelText: 'Resposta',
-                          hintText: 'Digite sua resposta aqui',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          filled: true,
-                          fillColor: Colors.grey[200], // Cor de fundo do input
-                          labelStyle: TextStyle(
-                            color: Colors.grey[700], // Cor do texto do label
-                          ),
-                          hintStyle: TextStyle(
-                            color: Colors.grey[500], // Cor do texto do hint
-                          ),
-                          suffixIcon: IconButton(
-                            icon: Icon(Icons.clear),
-                            onPressed: () {
-                              setState(() {
-                                _responses[index] = '';
-                              });
-                            },
-                          ),
-                        ),
-                      ),
+                  ),
+                ),
+                SizedBox(height: 20), // Espaçamento entre os botões
+                Container(
+                  width: viewportConstraints.maxWidth *
+                      0.5, // Metade da largura da tela
+                  height: 100, // Altura fixa
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Lógica quando o segundo botão for pressionado
+                      print('Segundo botão pressionado');
+                    },
+                    child: Text('Informações'),
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.green, // Cor do texto
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(10)), // Bordas arredondadas
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        print('Resposta enviada: ${_responses[index]}');
-                      },
-                      child: Text('Enviar'),
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        backgroundColor: Colors.blue,
-                      ),
-                    ),
-                  ],
-                );
-              },
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }
 }
+
+InformacoesPage() {}

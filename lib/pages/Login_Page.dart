@@ -1,3 +1,4 @@
+import 'package:cadastro_app/pages/page_osc.dart';
 import 'package:flutter/material.dart';
 import 'package:cadastro_app/pages/Register_Page.dart';
 import 'package:cadastro_app/custom_text_field.dart';
@@ -25,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Image.asset(
                   'lib/assets/app_logo.png',
-                  height: 100,
+                  height: 230,
                   fit: BoxFit.cover,
                 ), // Adicionando o logotipo
                 const SizedBox(height: 20),
@@ -72,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 10), // Espaçamento antes da mensagem
                 const Text(
-                  'Login e senha são "admin"',
+                  'Login e senha de usuario "123" e do OSC "admin"',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.grey,
@@ -87,11 +88,17 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void login(String email, String password) {
-    if (email == 'admin' && password == 'admin') {
+    if (email == '123' && password == '123') {
       print('Login bem-sucedido');
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const HomePage()),
+      );
+    } else if (email == 'admin' && password == 'admin') {
+      print('Login OSC bem-sucedido');
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomePageOSC()),
       );
     } else {
       print('Email ou senha incorretos');

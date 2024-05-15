@@ -11,7 +11,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
-  String _name = ''; // Este campo é para o nome do usuário
+  String _name = '';
   String _email = '';
   String _password = '';
   String _idAssociacao = ''; // Este campo é para o ID da Associação
@@ -80,7 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     },
                     onSaved: (value) => _password = value!,
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
@@ -90,15 +90,15 @@ class _RegisterPageState extends State<RegisterPage> {
                             'Nome: $_name, Email: $_email, Senha: $_password, ID da Associação: $_idAssociacao');
                       }
                     },
-                    child: Text('Cadastrar'),
+                    child: const Text('Cadastrar'),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pop(
                           context); // Isso volta para a página anterior na pilha de navegação
                     },
-                    child: Text('Voltar para o Login'),
+                    child: const Text('Voltar para o Login'),
                   ),
                 ],
               ),
