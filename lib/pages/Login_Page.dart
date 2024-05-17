@@ -1,8 +1,9 @@
 import 'package:cadastro_app/pages/page_osc.dart';
 import 'package:flutter/material.dart';
 import 'package:cadastro_app/pages/Register_Page.dart';
-import 'package:cadastro_app/custom_text_field.dart';
+import 'package:cadastro_app/custom_text_field.dart'; // Certifique-se de que este arquivo suporte as novas propriedades
 import 'package:cadastro_app/pages/HomePage.dart';
+import 'package:flutter/widgets.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -13,6 +14,8 @@ class _LoginPageState extends State<LoginPage> {
   String _email = '';
   String _password = '';
   final _formKey = GlobalKey<FormState>();
+  ValueNotifier<bool> _isPasswordVisible =
+      ValueNotifier(false); // Controlador de visibilidade da senha
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +29,9 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Image.asset(
                   'lib/assets/app_logo.png',
-                  height: 230,
+                  height: 250,
                   fit: BoxFit.cover,
                 ), // Adicionando o logotipo
-                const SizedBox(height: 20),
                 CustomTextField(
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -38,20 +40,41 @@ class _LoginPageState extends State<LoginPage> {
                     return null;
                   },
                   onSaved: (value) => {_email = value!},
-                  labelText: 'Email',
+                  labelText: 'Digite o seu Email',
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 CustomTextField(
+                  labelText: 'Digite a sua senha',
+                  obscureText: !_isPasswordVisible
+                      .value, // Use o estado para controlar a visibilidade
+                  onSaved: (value) => {_password = value!},
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Por favor, insira sua senha';
                     }
                     return null;
                   },
-                  onSaved: (value) => {_password = value!},
-                  labelText: 'Senha',
+                  suffixIcon: IconButton(
+                    icon: Icon(_isPasswordVisible.value
+                        ? Icons.visibility_off
+                        : Icons.visibility),
+                    onPressed: () {
+                      setState(() {
+                        // Atualize o estado para refletir a nova visibilidade
+                        _isPasswordVisible.value = !_isPasswordVisible.value;
+                      });
+                    },
+                  ),
                 ),
-                const SizedBox(height: 20), // Espaçamento após o campo de senha
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RegisterPage()),
+                    );
+                  },
+                  child: const Text('Cadastrar'),
+                ), // Espaçamento após o campo de senha
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
@@ -61,17 +84,16 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   child: const Text('Entrar'),
                 ),
-                const SizedBox(height: 20),
-                ElevatedButton(
+                TextButton(
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => RegisterPage()),
                     );
                   },
-                  child: const Text('Cadastrar'),
+                  child: const Text('Esqueceu a senha?'),
                 ),
-                const SizedBox(height: 10), // Espaçamento antes da mensagem
+                const SizedBox(height: 5),
                 const Text(
                   'Login e senha de usuario "123" e do OSC "admin"',
                   style: TextStyle(
@@ -112,7 +134,7 @@ class _LoginPageState extends State<LoginPage> {
 class GradientContainer extends StatelessWidget {
   final Widget child;
 
-  const GradientContainer({super.key, required this.child});
+  const GradientContainer({Key? key, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

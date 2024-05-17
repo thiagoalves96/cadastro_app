@@ -1,11 +1,13 @@
+// Arquivo: lib/pages/config_page.dart
+
 import 'package:flutter/material.dart';
 
-class QuestionarioPage extends StatefulWidget {
+class ConfigPage extends StatefulWidget {
   @override
-  _QuestionarioPageState createState() => _QuestionarioPageState();
+  _ConfigPageState createState() => _ConfigPageState();
 }
 
-class _QuestionarioPageState extends State<QuestionarioPage> {
+class _ConfigPageState extends State<ConfigPage> {
   final _formKey = GlobalKey<FormState>();
   String? _nome;
   int? _idade;
@@ -16,7 +18,7 @@ class _QuestionarioPageState extends State<QuestionarioPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Questionário IBGE'),
+        title: Text('Alterar Perfil'),
         backgroundColor: Colors.blue,
       ),
       body: Form(
@@ -99,11 +101,12 @@ class _QuestionarioPageState extends State<QuestionarioPage> {
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Dados salvos com sucesso')),
+                    const SnackBar(
+                        content: Text('Perfil atualizado com sucesso')),
                   );
                 }
               },
-              child: const Text('Salvar'),
+              child: const Text('Salvar Alterações'),
             ),
           ],
         ),

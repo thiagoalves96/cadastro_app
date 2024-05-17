@@ -1,4 +1,5 @@
 import 'package:cadastro_app/pages/Login_Page.dart';
+import 'package:cadastro_app/pages/config_conta.dart';
 import 'package:cadastro_app/pages/beneficio_page.dart';
 import 'package:cadastro_app/pages/historico_page.dart';
 import 'package:cadastro_app/pages/mensagem_page.dart';
@@ -114,6 +115,17 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => BeneficioPage()),
+                );
+              },
+            ),
+            // Dentro do arquivo HomePage.dart, dentro do método build do Drawer
+            ListTile(
+              leading: const Icon(Icons.settings), // Ícone de configuração
+              title: const Text('Configurações'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ConfigPage()),
                 );
               },
             ),
