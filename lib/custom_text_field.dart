@@ -7,6 +7,8 @@ class CustomTextField extends StatelessWidget {
   final FormFieldSetter<String>? onSaved;
   final FormFieldValidator<String>? validator;
   final Widget? suffixIcon; // Agora é opcional
+  final TextEditingController?
+      controller; // Adicionado controller como opcional
 
   const CustomTextField({
     Key? key,
@@ -16,6 +18,7 @@ class CustomTextField extends StatelessWidget {
     this.onSaved,
     this.validator,
     this.suffixIcon,
+    this.controller, // Adicionado controller como opcional
   }) : super(key: key);
 
   @override
@@ -23,6 +26,7 @@ class CustomTextField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(4.0),
       child: TextFormField(
+        controller: controller, // Utilizando o controller
         keyboardType: keyboardType,
         obscureText: obscureText,
         onSaved: onSaved,

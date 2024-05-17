@@ -1,9 +1,9 @@
-import 'package:cadastro_app/pages/page_osc.dart';
+import 'package:cadastro_app/pages/recuperar_page.dart';
+import 'package:cadastro_app/pageOsc/page_osc.dart';
 import 'package:flutter/material.dart';
 import 'package:cadastro_app/pages/Register_Page.dart';
 import 'package:cadastro_app/custom_text_field.dart'; // Certifique-se de que este arquivo suporte as novas propriedades
 import 'package:cadastro_app/pages/HomePage.dart';
-import 'package:flutter/widgets.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -88,7 +88,8 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => RegisterPage()),
+                      MaterialPageRoute(
+                          builder: (context) => RecuperarContaPage()),
                     );
                   },
                   child: const Text('Esqueceu a senha?'),

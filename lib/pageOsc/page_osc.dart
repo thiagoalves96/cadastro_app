@@ -1,3 +1,5 @@
+import 'package:cadastro_app/pageOsc/agendar_retirada.dart';
+import 'package:cadastro_app/pageOsc/create_quest.dart';
 import 'package:flutter/material.dart';
 
 class HomePageOSC extends StatelessWidget {
@@ -30,7 +32,6 @@ class HomePageOSC extends StatelessWidget {
                 children: <Widget>[
                   CircleAvatar(
                     radius: 50,
-                    backgroundColor: Color.fromARGB(255, 230, 227, 227),
                     backgroundImage: NetworkImage(
                         'https://i.pinimg.com/564x/65/59/05/65590513a81918f9142d3c69b6deeabf.jpg'),
                   ),
@@ -45,22 +46,55 @@ class HomePageOSC extends StatelessWidget {
               children: <Widget>[
                 ListTile(
                   leading: Icon(Icons.add_box),
-                  title: Text('Criar questionários para os Usuários'),
+                  title: Text('Criar questionários gerais'),
                   onTap: () {
-                    // Implemente a navegação ou ação aqui
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CreateQuestionsPage()),
+                    );
                   },
                 ),
                 ListTile(
                   leading: Icon(Icons.file_download),
                   title: Text('Exportar questionários dos Usuários'),
                   onTap: () {
-                    // Implemente a navegação ou ação aqui
+                    // Inicia a simulação do download do arquivo
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Download iniciado...'),
+                        duration: Duration(seconds: 3),
+                        action: SnackBarAction(
+                          label: 'Cancelar',
+                          onPressed: () {
+                            // Aqui você poderia cancelar o download real, se houvesse um
+                          },
+                        ),
+                      ),
+                    );
+
+                    // Simula o término do download após um breve período
+                    Future.delayed(Duration(seconds: 3)).then((_) {
+                      ScaffoldMessenger.of(context)
+                          .hideCurrentSnackBar(); // Esconde a snackbar atual
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Download concluído'),
+                          duration: Duration(seconds: 3),
+                        ),
+                      );
+                    });
                   },
                 ),
                 ListTile(
                   leading: Icon(Icons.calendar_today),
                   title: Text('Agendar retirada dos Benefícios'),
                   onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AgendarRetiradaPage()),
+                    );
                     // Implemente a navegação ou ação aqui
                   },
                 ),

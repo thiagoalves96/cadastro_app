@@ -21,14 +21,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('NOME DA OSC'),
+        title: const Text('NOME DA OSC'),
         backgroundColor: Colors.blue,
         actions: const <Widget>[
           Padding(
             padding: EdgeInsets.all(8.0),
             child: CircleAvatar(
               radius: 20,
-              backgroundColor: Color.fromARGB(255, 230, 227, 227),
               backgroundImage: NetworkImage(
                   'https://i.pinimg.com/564x/65/59/05/65590513a81918f9142d3c69b6deeabf.jpg'),
             ),
@@ -109,6 +108,16 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.question_answer),
+              title: const Text('Questionário'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => QuestionarioPage()),
+                );
+              },
+            ),
+            ListTile(
               leading: const Icon(Icons.card_giftcard),
               title: const Text('Benefício'),
               onTap: () {
@@ -135,8 +144,8 @@ class _HomePageState extends State<HomePage> {
 
             // Adicionando o ListTile de Sair
             ListTile(
-              leading: Icon(Icons.logout), // Ícone de sair
-              title: Text('Sair'),
+              leading: const Icon(Icons.logout), // Ícone de sair
+              title: const Text('Sair'),
               onTap: () {
                 // Navega de volta à página de login
                 Navigator.pushReplacement(context,
@@ -146,57 +155,85 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+      // Dentro do método build do corpo da HomePage
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints viewportConstraints) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  width: viewportConstraints.maxWidth *
-                      0.5, // Metade da largura da tela
-                  height: 100, // Altura fixa
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Lógica quando o primeiro botão for pressionado
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => QuestionarioPage()),
-                      );
+          return ListView(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  'Notícias e Atualizações',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              ),
+              // Artigo fictício sobre um novo recurso
+              Card(
+                child: ListTile(
+                  leading: const Icon(Icons.new_releases),
+                  title: const Text(
+                      'Novo recurso lançado: Análise de Dados Avançada'),
+                  subtitle: const Text(
+                      'Descubra como otimizar seus processos com nossa nova ferramenta de análise de dados avançada.'),
+                  trailing: const Text('Ler mais'),
+                  onTap: () {
+                    // Navegar para detalhes da notícia
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //       builder: (context) => DetalhesArtigoPage()),
+                    // );
+                  },
+                ),
+              ),
+              // Promoção
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                child: Card(
+                  child: ListTile(
+                    leading: const Icon(Icons.local_offer),
+                    title: const Text('Promoção Especial'),
+                    subtitle: const Text(
+                        'Desfrute de 20% de desconto em todos os planos premium até o final do mês.'),
+                    trailing: const Text('Ver oferta'),
+                    onTap: () {
+                      // Navegar para detalhes da promoção
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //       builder: (context) => DetalhesPromocaoPage()),
+                      // );
                     },
-                    child: Text('Questionário do OSC'),
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colors.blue, // Cor do texto
-                      shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(10)), // Bordas arredondadas
-                    ),
                   ),
                 ),
-                SizedBox(height: 20), // Espaçamento entre os botões
-                Container(
-                  width: viewportConstraints.maxWidth *
-                      0.5, // Metade da largura da tela
-                  height: 100, // Altura fixa
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Lógica quando o segundo botão for pressionado
-                      print('Segundo botão pressionado');
+              ),
+              // Conteúdo educativo
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                child: Card(
+                  child: ListTile(
+                    leading: const Icon(Icons.book),
+                    title: const Text(
+                        'Dica do Dia: Organize suas tarefas eficientemente'),
+                    subtitle: const Text(
+                        'Aprenda técnicas para melhorar sua produtividade e equilíbrio pessoal.'),
+                    trailing: const Text('Saiba mais'),
+                    onTap: () {
+                      // Navegar para detalhes da dica
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //       builder: (context) => DetalhesDicaPage()),
+                      // );
                     },
-                    child: Text('Informações'),
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colors.green, // Cor do texto
-                      shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(10)), // Bordas arredondadas
-                    ),
                   ),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(height: 20), // Espaçamento entre as notícias
+              // Outros conteúdos como destaque de funcionalidades, promoções, etc.
+            ],
           );
         },
       ),

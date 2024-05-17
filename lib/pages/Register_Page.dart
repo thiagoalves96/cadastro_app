@@ -92,7 +92,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: const Text('Cadastrar'),
                     ),
                     const SizedBox(height: 20),
-                    ElevatedButton(
+                    TextButton(
                       onPressed: () {
                         Navigator.pop(context);
                       },
