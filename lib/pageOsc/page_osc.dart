@@ -1,4 +1,5 @@
 import 'package:cadastro_app/pageOsc/agendar_retirada.dart';
+import 'package:cadastro_app/pageOsc/comunicado_osc.dart';
 import 'package:cadastro_app/pageOsc/create_quest.dart';
 import 'package:flutter/material.dart';
 
@@ -8,11 +9,11 @@ class HomePageOSC extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Home OSC'),
+        title: const Text('Home OSC'),
         backgroundColor: Colors.blue,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             onPressed: () {
               print('Sair da conta');
               Navigator.of(context).popUntil((route) => route.isFirst);
@@ -35,8 +36,7 @@ class HomePageOSC extends StatelessWidget {
                     backgroundImage: NetworkImage(
                         'https://i.pinimg.com/564x/65/59/05/65590513a81918f9142d3c69b6deeabf.jpg'),
                   ),
-                  SizedBox(height: 10),
-                  Text('Quantidade de Usuários: 22'),
+                  Text('Quantidade de Usuários: 10'),
                 ],
               ),
             ),
@@ -45,8 +45,8 @@ class HomePageOSC extends StatelessWidget {
             child: ListView(
               children: <Widget>[
                 ListTile(
-                  leading: Icon(Icons.add_box),
-                  title: Text('Criar questionários gerais'),
+                  leading: const Icon(Icons.add_box),
+                  title: const Text('Criar questionários gerais'),
                   onTap: () {
                     Navigator.push(
                       context,
@@ -56,14 +56,14 @@ class HomePageOSC extends StatelessWidget {
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.file_download),
-                  title: Text('Exportar questionários dos Usuários'),
+                  leading: const Icon(Icons.file_download),
+                  title: const Text('Exportar questionários dos Usuários'),
                   onTap: () {
                     // Inicia a simulação do download do arquivo
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text('Download iniciado...'),
-                        duration: Duration(seconds: 3),
+                        content: const Text('Download iniciado...'),
+                        duration: const Duration(seconds: 3),
                         action: SnackBarAction(
                           label: 'Cancelar',
                           onPressed: () {
@@ -74,11 +74,11 @@ class HomePageOSC extends StatelessWidget {
                     );
 
                     // Simula o término do download após um breve período
-                    Future.delayed(Duration(seconds: 3)).then((_) {
+                    Future.delayed(const Duration(seconds: 3)).then((_) {
                       ScaffoldMessenger.of(context)
                           .hideCurrentSnackBar(); // Esconde a snackbar atual
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
+                        const SnackBar(
                           content: Text('Download concluído'),
                           duration: Duration(seconds: 3),
                         ),
@@ -87,8 +87,8 @@ class HomePageOSC extends StatelessWidget {
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.calendar_today),
-                  title: Text('Agendar retirada dos Benefícios'),
+                  leading: const Icon(Icons.calendar_today),
+                  title: const Text('Agendar retirada dos Benefícios'),
                   onTap: () {
                     Navigator.push(
                       context,
@@ -99,10 +99,14 @@ class HomePageOSC extends StatelessWidget {
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.message),
-                  title: Text('Enviar Mensagem para os Usuários'),
+                  leading: const Icon(Icons.notifications_active_sharp),
+                  title: const Text('Enviar comunicado para os Usuários'),
                   onTap: () {
-                    // Implemente a navegação ou ação aqui
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ComunicadoOscPage()),
+                    ); // Implemente a navegação ou ação aqui
                   },
                 ),
               ],
